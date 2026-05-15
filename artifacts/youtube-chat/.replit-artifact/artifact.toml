@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "YouTube AI Chatbot"
+version = "1.0.0"
+id = "artifacts/youtube-chat"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24857
+
+[services.development]
+run = "pnpm --filter @workspace/youtube-chat run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/youtube-chat", "run", "build" ]
+publicDir = "artifacts/youtube-chat/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24857"
+BASE_PATH = "/"
