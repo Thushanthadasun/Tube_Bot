@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "TubeChat AI",
+  "version": "1.0.0",
+  "description": "AI chatbot for YouTube — filter content, search videos, and manage your homepage with natural language.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://31d5fd0a-6834-4430-aba4-ec9b9880dc47-00-39s15ceewthwo.janeway.replit.dev/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TubeChat AI"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
